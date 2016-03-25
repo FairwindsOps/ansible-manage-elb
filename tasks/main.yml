@@ -1,0 +1,8 @@
+---
+
+- include: elb.yml
+  tags: elb
+
+- include: dns.yml
+  when: elb_manage_set_dns
+  tags: dns

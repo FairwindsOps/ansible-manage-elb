@@ -1,0 +1,20 @@
+---
+
+# Commented variable names need to be set
+
+# elb_manage_elb_name: ''
+# elb_manage_elb_scheme: '' # internet-facing|internal
+# elb_manage_elb_subnets: ''
+# elb_manage_elb_listeners: ''
+# elb_manage_elb_health_check: ''
+
+elb_manage_elb_security_group_ids: "{{ hostvars[inventory_hostname][env + '_presentation'] }}"
+elb_manage_aws_region: "{{ aws_region }}"
+elb_manage_debug: "{{ debug|default('False') }}"
+
+# DNS related:
+elb_manage_set_dns: false
+elb_manage_dns_overwrite: false
+# elb_manage_dns_zone needs to be set only if elb_manage_set_dns is true:
+# elb_manage_dns_zone: ''
+elb_manage_dns_record: "{{ env }}.{{ elb_manage_dns_zone|default(omit) }}"
