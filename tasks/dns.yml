@@ -1,0 +1,31 @@
+---
+
+# - block:
+#   - debug: var=elb_manage_dns_zone
+#   - debug: var=elb_manage_dns_record
+#   - debug: var=elb.elb.dns_name
+#   - debug: var=elb_manage_set_dns
+#   - debug: var=elb
+#   when: elb_manage_debug
+
+- name: create DNS CNAME to the ELB for scheme- internal
+  route53:
+    command: 'create'
+    overwrite: "{{ elb_manage_dns_overwrite }}"
+    zone: "{{ elb_manage_dns_zone }}"
+    record: "{{ elb_manage_dns_record }}"
+    type: 'CNAME'
+    value: "{{elb.elb.dns_name}}"
+  when: elb_manage_set_dns and elb_manage_elb_scheme == 'internal'
+
+- name: create DNS A alias to the ELB for scheme- internet-facing
+  route53:
+    command: 'create'
+    overwrite: "{{ elb_manage_dns_overwrite }}"
+    zone: "{{ elb_manage_dns_zone }}"
+    record: "{{ elb_manage_dns_record }}"
+    type: 'A'
+    alias: true
+    value: "{{elb.elb.dns_name}}"
+    alias_hosted_zone_id: "{{ elb.elb.hosted_zone_id }}"
+  when: elb_manage_set_dns and elb_manage_elb_scheme == 'internet-facing'
