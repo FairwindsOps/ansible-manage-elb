@@ -1,4 +1,4 @@
-Role Name
+Role: manage-elb
 =========
 
 Create, configure ELBs in the Omnia framework
