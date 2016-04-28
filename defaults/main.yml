@@ -18,3 +18,7 @@ elb_manage_dns_overwrite: false
 # elb_manage_dns_zone needs to be set only if elb_manage_set_dns is true:
 # elb_manage_dns_zone: ''
 elb_manage_dns_record: "{{ env }}.{{ elb_manage_dns_zone|default(omit) }}"
+
+elb_manage_idle_timeout: '60'
+elb_manage_connection_draining_timeout: '30'
+elb_manage_cross_az_load_balancing: 'yes'

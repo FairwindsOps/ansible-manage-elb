@@ -11,12 +11,15 @@
 
 - name: ensure ELB
   ec2_elb_lb:
-    name:                   "{{ elb_manage_elb_name }}"
-    state:                  present
-    region:                 "{{ elb_manage_aws_region }}"
-    scheme:                 "{{ elb_manage_elb_scheme }}"
-    subnets:                "{{ elb_manage_elb_subnets }}"
-    security_group_ids:     "{{ elb_manage_elb_security_group_ids }}"
-    listeners:              "{{ elb_manage_elb_listeners }}"
-    health_check:           "{{ elb_manage_elb_health_check }}"
+    name:                           "{{ elb_manage_elb_name }}"
+    state:                          present
+    region:                         "{{ elb_manage_aws_region }}"
+    scheme:                         "{{ elb_manage_elb_scheme }}"
+    subnets:                        "{{ elb_manage_elb_subnets }}"
+    security_group_ids:             "{{ elb_manage_elb_security_group_ids }}"
+    listeners:                      "{{ elb_manage_elb_listeners }}"
+    health_check:                   "{{ elb_manage_elb_health_check }}"
+    idle_timeout:                   "{{ elb_manage_idle_timeout }}"
+    connection_draining_timeout:    "{{ elb_manage_connection_draining_timeout }}"
+    cross_az_load_balancing:        "{{ elb_manage_cross_az_load_balancing }}"
   register: elb
