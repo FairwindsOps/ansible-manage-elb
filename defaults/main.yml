@@ -18,8 +18,10 @@ elb_manage_dns_overwrite: false
 # elb_manage_dns_zone needs to be set only if elb_manage_set_dns is true:
 # elb_manage_dns_zone: ''
 elb_manage_dns_record: "{{ env }}.{{ elb_manage_dns_zone|default(omit) }}"
-elb_manage_dns_public_zone: true
-elb_manage_dns_private_zone: false
+elb_manage_dns_public_zone_enabled: true
+elb_manage_dns_public_zone: "{{ elb_manage_dns_zone }}"
+elb_manage_dns_private_zone_enabled: false
+elb_manage_dns_private_zone: "{{ elb_manage_dns_zone }}"
 
 elb_manage_idle_timeout: '60'
 elb_manage_connection_draining_timeout: '30'
