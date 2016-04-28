@@ -3,6 +3,10 @@
 - include: elb.yml
   tags: elb
 
-- include: dns.yml
-  when: elb_manage_set_dns
+- include: dns.yml private_zone=false
+  when: elb_manage_set_dns and elb_manage_dns_public_zone
+  tags: dns
+
+- include: dns.yml private_zone=true
+  when: elb_manage_set_dns and elb_manage_dns_private_zone
   tags: dns
