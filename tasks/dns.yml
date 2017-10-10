@@ -12,7 +12,8 @@
   route53:
     command: 'create'
     overwrite: "{{ elb_manage_dns_overwrite }}"
-    zone: "{{ elb_manage_dns_zone }}"
+    zone: "{{ dns_zone }}"
+    private_zone: "{{ private_zone }}"
     record: "{{ elb_manage_dns_record }}"
     type: 'CNAME'
     value: "{{elb.elb.dns_name}}"
@@ -22,7 +23,8 @@
   route53:
     command: 'create'
     overwrite: "{{ elb_manage_dns_overwrite }}"
-    zone: "{{ elb_manage_dns_zone }}"
+    zone: "{{ dns_zone }}"
+    private_zone: "{{ private_zone }}"
     record: "{{ elb_manage_dns_record }}"
     type: 'A'
     alias: true

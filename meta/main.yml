@@ -6,4 +6,4 @@ galaxy_info:
   min_ansible_version: 1.2
   galaxy_tags: []
 dependencies:
-  - reactiveops.get-vpc-facts-master
+  - reactiveops.get-vpc-facts
