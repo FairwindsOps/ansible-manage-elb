@@ -16,7 +16,7 @@ See `defaults/main.yml`
 Dependencies
 ------------
 
-[reactiveops.get-vpc-facts](https://github.com/reactiveops/ansible-get-vpc-facts) is a dependency listed in `meta/main.yml`
+[fairwinds.get-vpc-facts](https://github.com/FairwindsOps/ansible-get-vpc-facts) is a dependency listed in `meta/main.yml`
 
 Example Playbook
 ----------------
@@ -41,7 +41,7 @@ Example Playbook
         layer_config: "{{ stacks.streetjumpers.layers.default_elb }}"
 
   roles:
-    - role: reactiveops.elb-manage
+    - role: fairwinds.elb-manage
       elb_manage_elb_name:           "{{ stacks.streetjumpers.layers.app.elb_name }}"
       elb_manage_elb_scheme:         "{{ layer_config.scheme }}"
       elb_manage_elb_subnets:        "{{ subnets }}"
@@ -56,4 +56,4 @@ Example Playbook
 Author Information
 ------------------
 
-ReactiveOps
+Fairwinds
